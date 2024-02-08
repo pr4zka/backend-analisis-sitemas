@@ -12,11 +12,12 @@ export class CreateUserInput {
   name: string;
 
   @Field()
+  apellido: string;
+
+  @Field()
   email: string;
 
   @Field()
   age: number;
 
-  @Field()
-  userId: number;
 }

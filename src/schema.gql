@@ -7,37 +7,48 @@ type User {
   username: String!
   password: String!
   name: String!
+  apellido: String!
   email: String!
   age: Float!
-  userId: Float!
+}
+
+type AuhtEntity {
+  username: String!
+  password: String!
+  access_token: String!
 }
 
 type Query {
   getUsers: [User!]!
-  user(id: Int!): User!
 }
 
 type Mutation {
   createUser(userInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
+  login(loginInput: LoginInput!): AuhtEntity!
 }
 
 input CreateUserInput {
   username: String!
   password: String!
   name: String!
+  apellido: String!
   email: String!
   age: Float!
-  userId: Float!
 }
 
 input UpdateUserInput {
   username: String
   password: String
   name: String
+  apellido: String
   email: String
   age: Float
-  userId: Float
   id: Int!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
 }

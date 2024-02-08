@@ -6,19 +6,19 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
-model User {
-  id       Int    @id @default(autoincrement())
-  username String @unique
-  password String 
-  person   Person[]
+model Person {
+  id        Int      @id @default(autoincrement())
+  name      String
+  apellido  String
+  age       Int
+  email     String
+  users     User[]   // Relación uno a muchos con User
 }
 
-model Person {
-  id    Int    @id @default(autoincrement())
-  name  String
-  age   Int
-  email String
-  usuario  User   @relation(fields: [userId], references: [id])
-  userId Int
+model User {
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  password String 
+  person   Person?  @relation(fields: [personId], references: [id]) // Relación con Person
+  personId Int?     // Campo para almacenar la clave externa
 }

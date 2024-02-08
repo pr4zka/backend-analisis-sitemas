@@ -15,11 +15,11 @@ export class User {
   name: string;
 
   @Field()
+  apellido: string;
+
+  @Field()
   email: string;
 
   @Field()
   age: number;
-
-  @Field()
-  userId: number;
 }
